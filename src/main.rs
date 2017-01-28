@@ -9,21 +9,26 @@ fn main() {
 
     let secret_number = rand::thread_rng().gen_range(1, 101);
 
-    println!("Please inpiut your guess.");
+    loop {
+        println!("Please inpiut your guess.");
 
-    let mut guess = String::new();
+        let mut guess = String::new();
 
-    io::stdin().read_line(&mut guess)
-        .expect("Failed to read line");
+        io::stdin().read_line(&mut guess)
+            .expect("Failed to read line");
 
-    let guess: u32 = guess.trim().parse()
-        .expect("Please type a number!");
+        let guess: u32 = guess.trim().parse()
+            .expect("Please type a number!");
 
-    println!("Yout guessed: {}", guess);
+        println!("Yout guessed: {}", guess);
 
-    match guess.cmp(&secret_number) {
-        Ordering::Less      => println!("Too small!"),
-        Ordering::Greater   => println!("Too large!"),
-        Ordering::Equal     => println!("You win!"),
+        match guess.cmp(&secret_number) {
+            Ordering::Less      => println!("Too small!"),
+            Ordering::Greater   => println!("Too large!"),
+            Ordering::Equal     => {
+                println!("You win!");
+                break;
+            }
+        }
     }
 }
