@@ -6,11 +6,11 @@ Rust tutorial project
 Use a docker container:
 
 ```bash
-docker run -it --rm -v $(pwd):/source jimmycuadra/rust
+$ docker run -it --rm -v $(pwd):/source jimmycuadra/rust
 ```
 
 Then inside use `cargo` to build and start the game:
 
 ```bash
-cargo run
+$ cargo run
 ```
